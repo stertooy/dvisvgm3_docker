@@ -31,13 +31,10 @@ RUN <<EOF
 EOF
 
 # Install dvisvgm
-ADD ./${DVISVGM}.tar.gz /opt/${DVISVGM}
+ADD ./${DVISVGM}.tar.gz /opt
 
 RUN <<EOF
-    cd /opt
-    tar -xzf ${DVISVGM}.tar.gz
-    rm ${DVISVGM}.tar.gz
-    cd ${DVISVGM}
+    cd /opt/${DVISVGM}
     ./configure --with-ttfautohint=/usr/include
     make
 EOF
