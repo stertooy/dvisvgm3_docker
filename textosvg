@@ -4,7 +4,7 @@ filename="${1%.*}"
 folder="/convert"
 tempfilename="tex_to_svg_temp"
  
-pdflatex -interaction=batchmode -halt-on-error -shell-escape -output-format=dvi -jobname=$folder/$tempfilename $1
+pdflatex -interaction=batchmode -halt-on-error -output-format=dvi -output-directory=$folder -jobname=$tempfilename $1
 
 
 ## INPUT OPTIONS
@@ -30,7 +30,7 @@ dvisvgm $folder/$tempfilename.dvi               \
     --embed-bitmaps                     \
     --font-format=ttf                   \
     --optimize=all                      \
-    --output=$folder/$filename-%p.svg  \
+    --output=$filename-%p.svg  \
     --precision=6                       \
     --relative                          \
     --exact-bbox
