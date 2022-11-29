@@ -13,7 +13,6 @@ RUN <<EOF
     apt-get upgrade --yes
     apt-get install --yes --no-install-recommends \
         build-essential \
-        libboost-dev \
         libbrotli-dev \
         libclipper-dev \
         libfreetype-dev \
@@ -21,7 +20,6 @@ RUN <<EOF
         libkpathsea-dev \
         libpotrace-dev \
         libssl-dev \
-        libttfautohint-dev \
         libwoff-dev \
         libxxhash-dev \
         pkg-config \
@@ -34,6 +32,7 @@ RUN <<EOF
         texlive-science \
         zlib1g-dev
 EOF
+# libttfautohint-dev - removed because results are worse
 
 RUN <<EOF
     cd /
@@ -43,7 +42,8 @@ RUN <<EOF
     tar -xzf ${DVISVGM}.tar.gz
     rm ${DVISVGM}.tar.gz
     cd ${DVISVGM}
-    ./configure --with-ttfautohint=/usr/include
+    ./configure
     make
     make install
 EOF
+# --with-ttfautohint=/usr/include - removed because results are worse
