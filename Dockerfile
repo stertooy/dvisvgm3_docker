@@ -6,6 +6,7 @@ ENV DVISVGM="dvisvgm-3.0"
 
 COPY ./${DVISVGM}.tar.gz /opt/${DVISVGM}.tar.gz
 
+
 CMD ["bash"]
 
 RUN <<EOF
