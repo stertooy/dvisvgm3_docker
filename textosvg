@@ -1,7 +1,7 @@
 #!/bin/sh
 filename="$1"
 filename="${filename%.*}"
-tempfilename="tex_to_svg_temp"
+tempfilename="/convert/tex_to_svg_temp"
  
 pdflatex -interaction=batchmode -halt-on-error -shell-escape -output-format=dvi -jobname=$tempfilename $1
 ## INPUT OPTIONS
@@ -27,7 +27,7 @@ dvisvgm tex_to_svg_temp.dvi         \
     --embed-bitmaps                 \
     --font-format=ttf               \
     --optimize=all                  \
-    --output=$filename-%p.svg       \
+    --output=/convert/$filename-%p.svg       \
     --precision=6                   \
     --relative                      \
     --exact-bbox
