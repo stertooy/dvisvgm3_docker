@@ -16,7 +16,6 @@ RUN <<EOF
         build-essential \
         libbrotli-dev \
         libfreetype-dev \
-        libgs-dev \
         libkpathsea-dev \
         libpotrace-dev \
         libssl-dev \
