@@ -1,6 +1,5 @@
 # syntax=docker/dockerfile:1.3-labs
 FROM ubuntu:kinetic as build
-# Run with DOCKER_BUILDKIT=1
 
 ENV DVISVGM="dvisvgm-3.0"
 
@@ -9,6 +8,7 @@ COPY ./textosvg /usr/local/bin/textosvg
 
 CMD ["bash"]
 
+# Install dependencies
 RUN <<EOF
     apt-get update
     apt-get upgrade --yes
@@ -20,6 +20,7 @@ RUN <<EOF
         libkpathsea-dev                           \
         libpotrace-dev                            \
         libssl-dev                                \
+        libttfautohint-dev                        \
         libwoff-dev                               \
         libxxhash-dev                             \
         pkg-config                                \
@@ -33,24 +34,22 @@ RUN <<EOF
         zlib1g-dev
     rm -rf /var/lib/apt/lists/*
 EOF
-#  - removed because ghostscript only needed for ps
-# libttfautohint-dev - removed because results are worse
 
+# Install dvisvgm and textosvg script
 RUN <<EOF
     mkdir /convert
     cd /opt
     tar -xzf ${DVISVGM}.tar.gz
     rm ${DVISVGM}.tar.gz
     cd ${DVISVGM}
-    ./configure
+    ./configure --with-ttfautohint=/usr/include
     make
     make install
     cd /usr/local/bin
     chmod +x textosvg
 EOF
-# --with-ttfautohint=/usr/include - removed because results are worse
 
-# Squash
+# Squash image
 FROM scratch
 COPY --from=build / /
 
