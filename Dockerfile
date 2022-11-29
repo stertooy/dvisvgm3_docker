@@ -33,6 +33,7 @@ RUN <<EOF
         texlive-luatex \
         texlive-pstricks \
         texlive-science \
+        ttfautohint \
         woff2 \
         zlib1g-dev
 EOF
