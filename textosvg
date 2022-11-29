@@ -32,4 +32,4 @@ dvisvgm tex_to_svg_temp.dvi         \
     --relative                      \
     --exact-bbox
 
-rm $tempfilename.dvi
+rm $tempfilename.*
