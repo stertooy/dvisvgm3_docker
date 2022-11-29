@@ -36,6 +36,7 @@ EOF
 # libttfautohint-dev - removed because results are worse
 
 RUN <<EOF
+    mkdir /convert
     cd /opt
     tar -xzf ${DVISVGM}.tar.gz
     rm ${DVISVGM}.tar.gz
@@ -43,16 +44,15 @@ RUN <<EOF
     ./configure
     make
     make install
-EOF
-# --with-ttfautohint=/usr/include - removed because results are worse
-
-RUN <<EOF
     cd /usr/local/bin
     chmod +x textosvg
 EOF
+# --with-ttfautohint=/usr/include - removed because results are worse
 
 # Squash
 FROM scratch
 COPY --from=build / /
+
+WORKDIR /convert
 
 CMD ["bash"]
