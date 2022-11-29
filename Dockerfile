@@ -32,6 +32,7 @@ RUN <<EOF
         zlib1g-dev
     rm -rf /var/lib/apt/lists/*
 EOF
+# libgs-dev - removed because ghostscript only needed for ps
 # libttfautohint-dev - removed because results are worse
 
 RUN <<EOF
