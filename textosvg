@@ -23,14 +23,14 @@ pdflatex -interaction=batchmode -halt-on-error -output-format=dvi -output-direct
 ## PROCESSING OPTIONS
 # --exact-bbox          Calculate exact bounding box.
                  
-dvisvgm $folder/$tempfilename.dvi               \
+dvisvgm $folder/$tempfilename.dvi       \
     --page=1-                           \
     --bbox=preview                      \
     --clipjoin                          \
     --embed-bitmaps                     \
     --font-format=ttf                   \
     --optimize=all                      \
-    --output=$filename-%p.svg  \
+    --output=$filename-%p.svg           \
     --precision=6                       \
     --relative                          \
     --exact-bbox
