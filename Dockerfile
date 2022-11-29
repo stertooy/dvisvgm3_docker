@@ -11,7 +11,7 @@ CMD ["bash"]
 RUN <<EOF
     apt-get update
     apt-get upgrade --yes
-    apt-get install --yes --no-install-recommends
+    apt-get install --yes --no-install-recommends \
         build-essential \
         ca-certificates \
         ghostscript \
