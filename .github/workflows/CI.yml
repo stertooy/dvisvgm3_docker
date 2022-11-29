@@ -8,7 +8,7 @@ env:
 
 jobs:
   build:
-    name: Publish GAP-${{ inputs.BRANCH }} Docker image
+    name: Publish dvisvgm docker image
     runs-on: ubuntu-latest
     permissions:
       contents: read
