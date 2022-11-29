@@ -24,7 +24,6 @@ RUN <<EOF
         libttfautohint-dev \
         libwoff-dev \
         libxxhash-dev \
-        openssl \
         pkg-config \
         texlive \
         texlive-fonts-extra \
@@ -33,7 +32,6 @@ RUN <<EOF
         texlive-luatex \
         texlive-pstricks \
         texlive-science \
-        woff2 \
         zlib1g-dev
 EOF
 
