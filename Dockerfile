@@ -5,7 +5,7 @@ FROM ubuntu:kinetic
 ENV DVISVGM="dvisvgm-3.0"
 
 COPY ./${DVISVGM}.tar.gz /opt/${DVISVGM}.tar.gz
-
+COPY ./textosvg /usr/local/bin/textosvg
 
 CMD ["bash"]
 
@@ -32,6 +32,7 @@ RUN <<EOF
         texlive-pstricks \
         texlive-science \
         zlib1g-dev
+    rm -rf /var/lib/apt/lists/*
 EOF
 # libttfautohint-dev - removed because results are worse
 
@@ -45,3 +46,8 @@ RUN <<EOF
     make install
 EOF
 # --with-ttfautohint=/usr/include - removed because results are worse
+
+RUN <<EOF
+    cd /usr/local/bin
+    chmod +x textosvg
+EOF
