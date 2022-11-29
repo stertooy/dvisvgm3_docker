@@ -13,7 +13,6 @@ RUN <<EOF
     apt-get upgrade --yes
     apt-get install --yes --no-install-recommends \
         build-essential \
-        ca-certificates \
         ghostscript \
         libboost-dev \
         libbrotli-dev \
@@ -38,11 +37,14 @@ RUN <<EOF
 EOF
 
 RUN <<EOF
+    cd /
+    ls
     cd /opt
+    ls
     tar -xzf ${DVISVGM}.tar.gz
     rm ${DVISVGM}.tar.gz
     cd ${DVISVGM}
-    ./configure #--with-ttfautohint
+    ./configure --with-ttfautohint
     make
     make install
 EOF
