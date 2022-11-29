@@ -35,10 +35,7 @@ EOF
 # libttfautohint-dev - removed because results are worse
 
 RUN <<EOF
-    cd /
-    ls
     cd /opt
-    ls
     tar -xzf ${DVISVGM}.tar.gz
     rm ${DVISVGM}.tar.gz
     cd ${DVISVGM}
