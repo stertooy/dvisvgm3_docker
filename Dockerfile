@@ -13,26 +13,27 @@ RUN <<EOF
     apt-get update
     apt-get upgrade --yes
     apt-get install --yes --no-install-recommends \
-        build-essential \
-        libbrotli-dev \
-        libfreetype-dev \
-        libkpathsea-dev \
-        libpotrace-dev \
-        libssl-dev \
-        libwoff-dev \
-        libxxhash-dev \
-        pkg-config \
-        texlive \
-        texlive-fonts-extra \
-        texlive-lang-european \
-        texlive-latex-extra \
-        texlive-luatex \
-        texlive-pstricks \
-        texlive-science \
+        build-essential                           \
+        libbrotli-dev                             \
+        libfreetype-dev                           \
+        libgs-dev                                 \
+        libkpathsea-dev                           \
+        libpotrace-dev                            \
+        libssl-dev                                \
+        libwoff-dev                               \
+        libxxhash-dev                             \
+        pkg-config                                \
+        texlive                                   \
+        texlive-fonts-extra                       \
+        texlive-lang-european                     \
+        texlive-latex-extra                       \
+        texlive-luatex                            \
+        texlive-pstricks                          \
+        texlive-science                           \
         zlib1g-dev
     rm -rf /var/lib/apt/lists/*
 EOF
-# libgs-dev - removed because ghostscript only needed for ps
+#  - removed because ghostscript only needed for ps
 # libttfautohint-dev - removed because results are worse
 
 RUN <<EOF
