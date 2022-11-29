@@ -13,11 +13,11 @@ RUN <<EOF
     apt-get upgrade --yes
     apt-get install --yes --no-install-recommends \
         build-essential \
-        ghostscript \
         libboost-dev \
         libbrotli-dev \
         libclipper-dev \
         libfreetype-dev \
+        libgs-dev \
         libkpathsea-dev \
         libpotrace-dev \
         libssl-dev \
