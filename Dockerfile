@@ -17,6 +17,7 @@ RUN <<EOF
         libbrotli-dev \
         libfreetype-dev \
         libgs-dev \
+        libkpathsea-dev \
         libpotrace-dev \
         libssl-dev \
         libwoff-dev \
