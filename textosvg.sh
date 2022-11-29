@@ -23,16 +23,16 @@ for file in "$@"; do
     ## PROCESSING OPTIONS
     # --exact-bbox          Calculate exact bounding box.
                  
-    dvisvgm $folder/$tempfilename.dvi       \
-        --page=1-                           \
-        --bbox=preview                      \
-        --clipjoin                          \
-        --embed-bitmaps                     \
-        --font-format=ttf                   \
-        --optimize=all                      \
-        --output=$filename-%p.svg           \
-        --precision=6                       \
-        --relative                          \
+    /opt/dvisvgm-3.0/src/dvisvgm $folder/$tempfilename.dvi \
+        --page=1-                                          \
+        --bbox=preview                                     \
+        --clipjoin                                         \
+        --embed-bitmaps                                    \
+        --font-format=ttf                                  \
+        --optimize=all                                     \
+        --output=$filename-%p.svg                          \
+        --precision=6                                      \
+        --relative                                         \
         --exact-bbox
 
     rm $folder/$tempfilename.*
