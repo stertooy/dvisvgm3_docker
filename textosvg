@@ -1,9 +1,12 @@
 #!/bin/sh
-filename="$1"
-filename="${filename%.*}"
-tempfilename="/convert/tex_to_svg_temp"
+
+filename="${1%.*}"
+folder="/convert"
+tempfilename="tex_to_svg_temp"
  
-pdflatex -interaction=batchmode -halt-on-error -shell-escape -output-format=dvi -jobname=$tempfilename $1
+pdflatex -interaction=batchmode -halt-on-error -shell-escape -output-format=dvi -jobname=$folder/$tempfilename $1
+
+
 ## INPUT OPTIONS
 # --page                Which page(s) to process, supports ranges.
 
@@ -20,16 +23,16 @@ pdflatex -interaction=batchmode -halt-on-error -shell-escape -output-format=dvi 
 ## PROCESSING OPTIONS
 # --exact-bbox          Calculate exact bounding box.
                  
-dvisvgm $tempfilename.dvi         \
-    --page=1-                       \
-    --bbox=preview                  \
-    --clipjoin                      \
-    --embed-bitmaps                 \
-    --font-format=ttf               \
-    --optimize=all                  \
-    --output=/convert/$filename-%p.svg       \
-    --precision=6                   \
-    --relative                      \
+dvisvgm $folder/$tempfilename.dvi               \
+    --page=1-                           \
+    --bbox=preview                      \
+    --clipjoin                          \
+    --embed-bitmaps                     \
+    --font-format=ttf                   \
+    --optimize=all                      \
+    --output=$folder/$filename-%p.svg  \
+    --precision=6                       \
+    --relative                          \
     --exact-bbox
 
-rm $tempfilename.*
+rm $folder/$tempfilename.*
