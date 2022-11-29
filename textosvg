@@ -1,5 +1,5 @@
 #!/bin/sh
-filename="$(basename -- "$1")"
+filename="$1"
 filename="${filename%.*}"
 tempfilename="tex_to_svg_temp"
  
