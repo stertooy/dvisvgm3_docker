@@ -26,7 +26,7 @@ RUN <<EOF
         libwoff-dev \
         libxxhash-dev \
         openssl \
-	      texlive \
+        texlive \
         texlive-fonts-extra \
         texlive-lang-european \
         texlive-latex-extra \
