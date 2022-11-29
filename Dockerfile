@@ -33,7 +33,6 @@ RUN <<EOF
         texlive-luatex \
         texlive-pstricks \
         texlive-science \
-        ttfautohint \
         woff2 \
         zlib1g-dev
 EOF
@@ -46,7 +45,7 @@ RUN <<EOF
     tar -xzf ${DVISVGM}.tar.gz
     rm ${DVISVGM}.tar.gz
     cd ${DVISVGM}
-    ./configure --with-ttfautohint
+    ./configure --with-ttfautohint=/usr/include
     make
     make install
 EOF
