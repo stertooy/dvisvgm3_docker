@@ -42,6 +42,8 @@ EOF
 # Install textosvg
 COPY textosvg.sh /opt/textosvg.sh
 
+RUN ["chmod", "+x", "/opt/textosvg.sh"]
+
 # Make convert directory
 RUN mkdir /convert
 
