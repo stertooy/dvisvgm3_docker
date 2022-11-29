@@ -31,7 +31,7 @@ RUN <<EOF
 EOF
 
 # Install dvisvgm
-ADD ./${DVISVGM}.tar.gz /opt
+ADD ${DVISVGM}.tar.gz /opt
 
 RUN <<EOF
     cd /opt/${DVISVGM}
@@ -40,7 +40,7 @@ RUN <<EOF
 EOF
 
 # Install textosvg
-COPY ./textosvg.sh /opt/textosvg.sh
+COPY textosvg.sh /opt/textosvg.sh
 
 # Make convert directory
 RUN mkdir /convert
