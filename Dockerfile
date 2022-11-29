@@ -3,11 +3,6 @@ FROM ubuntu:kinetic as build
 
 ENV DVISVGM="dvisvgm-3.0"
 
-COPY ./${DVISVGM}.tar.gz /opt/${DVISVGM}.tar.gz
-COPY ./textosvg /usr/local/bin/textosvg
-
-CMD ["bash"]
-
 # Install dependencies
 RUN <<EOF
     apt-get update
@@ -35,19 +30,23 @@ RUN <<EOF
     rm -rf /var/lib/apt/lists/*
 EOF
 
-# Install dvisvgm and textosvg script
+# Install dvisvgm
+ADD ./${DVISVGM}.tar.gz /opt/${DVISVGM}
+
 RUN <<EOF
-    mkdir /convert
     cd /opt
     tar -xzf ${DVISVGM}.tar.gz
     rm ${DVISVGM}.tar.gz
     cd ${DVISVGM}
     ./configure --with-ttfautohint=/usr/include
     make
-    make install
-    cd /usr/local/bin
-    chmod +x textosvg
 EOF
+
+# Install textosvg
+COPY ./textosvg.sh /opt/textosvg.sh
+
+# Make convert directory
+RUN mkdir /convert
 
 # Squash image
 FROM scratch
@@ -55,4 +54,5 @@ COPY --from=build / /
 
 WORKDIR /convert
 
-CMD ["bash"]
+ENTRYPOINT ["/bin/sh", "-c", "/opt/textosvg.sh"]
+CMD ["*.tex"]
