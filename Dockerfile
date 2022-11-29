@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.3-labs
-FROM ubuntu:kinetic
+FROM ubuntu:kinetic as build
 # Run with DOCKER_BUILDKIT=1
 
 ENV DVISVGM="dvisvgm-3.0"
@@ -50,3 +50,9 @@ RUN <<EOF
     cd /usr/local/bin
     chmod +x textosvg
 EOF
+
+# Squash
+FROM scratch
+COPY --from=build / /
+
+CMD ["bash"]
