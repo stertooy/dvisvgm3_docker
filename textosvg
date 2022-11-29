@@ -20,7 +20,7 @@ pdflatex -interaction=batchmode -halt-on-error -shell-escape -output-format=dvi 
 ## PROCESSING OPTIONS
 # --exact-bbox          Calculate exact bounding box.
                  
-dvisvgm tex_to_svg_temp.dvi         \
+dvisvgm $tempfilename.dvi         \
     --page=1-                       \
     --bbox=preview                  \
     --clipjoin                      \
