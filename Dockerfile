@@ -53,5 +53,5 @@ COPY --from=build / /
 
 WORKDIR /convert
 
-ENTRYPOINT ["/bin/sh", "-c", "/opt/textosvg.sh"]
+ENTRYPOINT ["/opt/textosvg.sh"]
 CMD ["*.tex"]
