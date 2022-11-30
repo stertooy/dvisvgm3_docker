@@ -34,6 +34,7 @@ for file in "$@"; do
         --precision=6                                      \
         --relative                                         \
         --exact-bbox
-
+    chmod go+w $filename-*.svg
     rm $folder/$tempfilename.*
 done
+
