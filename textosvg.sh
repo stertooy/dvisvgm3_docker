@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
+files=( $@ )
 folder="/convert"
 tempfilename="tex_to_svg_temp"
 
-for file in "$@"; do
+for file in "${files[@]}"; do
     filename="${file%.*}"
     pdflatex -interaction=batchmode -halt-on-error -output-format=dvi -output-directory=$folder -jobname=$tempfilename $1
 
