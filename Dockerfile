@@ -8,6 +8,8 @@ RUN <<EOF
     apt-get update
     apt-get upgrade --yes
     apt-get install --yes --no-install-recommends \
+        autoconf                                  \
+        automake                                  \
         autotools-dev                             \
         build-essential                           \
         libbrotli-dev                             \
@@ -16,6 +18,7 @@ RUN <<EOF
         libkpathsea-dev                           \
         libpotrace-dev                            \
         libssl-dev                                \
+        libtool                                   \
         libttfautohint-dev                        \
         libwoff-dev                               \
         libxxhash-dev                             \
@@ -30,7 +33,6 @@ RUN <<EOF
         texlive-luatex                            \
         texlive-pstricks                          \
         texlive-science
-    rm -rf /var/lib/apt/lists/*
 EOF
 
 # Install dvisvgm
@@ -40,6 +42,18 @@ RUN <<EOF
     cd /opt/${DVISVGM}
     ./configure --with-ttfautohint=/usr/include
     make
+EOF
+
+# Cleanup installers
+RUN <<EOF
+    apt-get autoremove --purge --yes \
+        autoconf                     \
+        automake                     \
+        autotools-dev                \
+        build-essential              \
+        libtool                      \
+        pkg-config
+    rm -rf /var/lib/apt/lists/*
 EOF
 
 # Install textosvg
