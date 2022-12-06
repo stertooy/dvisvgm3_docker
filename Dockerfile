@@ -8,6 +8,7 @@ RUN <<EOF
     apt-get update
     apt-get upgrade --yes
     apt-get install --yes --no-install-recommends \
+        autotools-dev                             \
         build-essential                           \
         libbrotli-dev                             \
         libfreetype-dev                           \
@@ -18,15 +19,17 @@ RUN <<EOF
         libttfautohint-dev                        \
         libwoff-dev                               \
         libxxhash-dev                             \
+        libz-dev                                  \
         pkg-config                                \
-        texlive                                   \
         texlive-fonts-extra                       \
+        texlive-fonts-recommended                 \
         texlive-lang-european                     \
+        texlive-latex-base                        \
         texlive-latex-extra                       \
+        texlive-latex-recommended                 \
         texlive-luatex                            \
         texlive-pstricks                          \
-        texlive-science                           \
-        zlib1g-dev
+        texlive-science
     rm -rf /var/lib/apt/lists/*
 EOF
 
