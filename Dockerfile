@@ -8,20 +8,24 @@ RUN <<EOF
     apt-get update
     apt-get upgrade --yes
     apt-get install --yes --no-install-recommends \
+                                                  \
         autoconf                                  \
         automake                                  \
         build-essential                           \
+        libtool                                   \
+        pkg-config                                \
+                                                  \
         libbrotli-dev                             \
         libfreetype-dev                           \
         libgs-dev                                 \
         libkpathsea-dev                           \
         libpotrace-dev                            \
         libssl-dev                                \
-        libtool                                   \
         libttfautohint-dev                        \
         libwoff-dev                               \
         libxxhash-dev                             \
         libz-dev                                  \
+                                                  \
         texlive-fonts-extra                       \
         texlive-fonts-recommended                 \
         texlive-lang-european                     \
@@ -30,7 +34,8 @@ RUN <<EOF
         texlive-latex-recommended                 \
         texlive-luatex                            \
         texlive-pstricks                          \
-        texlive-science
+        texlive-science                           \
+        
 EOF
 
 # Install dvisvgm
@@ -49,7 +54,9 @@ RUN <<EOF
         autoconf                     \
         automake                     \
         build-essential              \
-        libtool                      
+        libtool                      \
+        pkg-config                   \
+        
     rm -rf /var/lib/apt/lists/*
 EOF
 
