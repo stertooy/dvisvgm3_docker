@@ -10,7 +10,6 @@ RUN <<EOF
     apt-get install --yes --no-install-recommends \
         autoconf                                  \
         automake                                  \
-        autotools-dev                             \
         build-essential                           \
         libbrotli-dev                             \
         libfreetype-dev                           \
@@ -23,7 +22,6 @@ RUN <<EOF
         libwoff-dev                               \
         libxxhash-dev                             \
         libz-dev                                  \
-        pkg-config                                \
         texlive-fonts-extra                       \
         texlive-fonts-recommended                 \
         texlive-lang-european                     \
@@ -40,6 +38,7 @@ ADD ${DVISVGM}.tar.gz /opt
 
 RUN <<EOF
     cd /opt/${DVISVGM}
+    ./autogen.sh
     ./configure --with-ttfautohint=/usr/include
     make
 EOF
@@ -49,10 +48,8 @@ RUN <<EOF
     apt-get autoremove --purge --yes \
         autoconf                     \
         automake                     \
-        autotools-dev                \
         build-essential              \
-        libtool                      \
-        pkg-config
+        libtool                      
     rm -rf /var/lib/apt/lists/*
 EOF
 
